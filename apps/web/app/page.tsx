@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { AsciiHeroButton } from "../components/AsciiHeroButton";
+import { AppleStepsStack } from "../components/AppleStepsStack";
 import { HeroAnimation } from "../components/HeroAnimation";
 
 export default function Home() {
@@ -75,22 +77,25 @@ export default function Home() {
             PRAXIS drops candidates into procedurally-mutated, historically-solved real-world problems.
             AI observers track <em>how</em> you think, not just what you answer.
           </p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => router.push("/seeker/onboarding")}
-              style={{ padding: "16px 36px", fontSize: 14, fontWeight: 700, color: "#000", background: "#00ff41", border: "none", cursor: "pointer", boxShadow: "0 0 20px rgba(0,255,65,0.4)", textTransform: "uppercase", letterSpacing: "1px", display: "flex", alignItems: "center", gap: 10 }}
-            >
-              [ I'M A SEEKER ]
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.1)" }}
-              onClick={() => router.push("/login")}
-              style={{ padding: "16px 36px", fontSize: 14, fontWeight: 500, color: "#fff", background: "transparent", border: "1px solid #333", cursor: "pointer", textTransform: "uppercase", letterSpacing: "1px" }}
-            >
-              [ I'M A COMPANY ]
-            </motion.button>
+          <div style={{ display: "flex", gap: 24, justifyContent: "center", flexWrap: "wrap", margin: "24px 0" }}>
+            <AsciiHeroButton
+              shape="circle"
+              label="SEEKER"
+              sublabel="CANDIDATE SANDBOX"
+              href="/seeker/onboarding"
+              color="#00ff41"
+              width={280}
+              height={190}
+            />
+            <AsciiHeroButton
+              shape="cube"
+              label="COMPANY"
+              sublabel="ENTERPRISE PORTAL"
+              href="/login"
+              color="#38bdf8"
+              width={280}
+              height={190}
+            />
           </div>
         </div>
       </motion.section>
@@ -124,40 +129,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-          {[
-            { step: "01", title: "Baseline Litmus", desc: "Lightweight domain filter. Minimum viable competency gets you in.", icon: "⚡" },
-            { step: "02", title: "Segmentation", desc: "Grouped by performance, not pedigree. Your baseline score sets your tier.", icon: "🎯" },
-            { step: "03", title: "Simulation Engine", desc: "Real problems, procedurally mutated. No two candidates see the same version.", icon: "🧬" },
-            { step: "04", title: "Cross-Domain", desc: "Same engine, domain-specific skins. Engineering, Product, Finance, Data.", icon: "🔀" },
-            { step: "05", title: "Process Ranking", desc: "Approach, creativity, error recovery. Not just correctness.", icon: "📊" },
-            { step: "06", title: "Portable Record", desc: "Your verified track record. LinkedIn but your profile is your proof.", icon: "🛡️" },
-          ].map((item, i) => (
-            <motion.div
-              key={item.step}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              onMouseEnter={() => setHoveredCard(item.step)}
-              onMouseLeave={() => setHoveredCard(null)}
-              style={{
-                padding: 28,
-                border: `1px solid ${hoveredCard === item.step ? "#00ff41" : "#222"}`,
-                background: hoveredCard === item.step ? "rgba(0,255,65,0.02)" : "#050505",
-                transition: "all 0.2s",
-                cursor: "default",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-                <span style={{ fontSize: 24, filter: "grayscale(100%)" }}>{item.icon}</span>
-                <span style={{ fontSize: 12, fontWeight: 700, color: "#00ff41", letterSpacing: "1px" }}>[{item.step}]</span>
-              </div>
-              <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 8px", textTransform: "uppercase" }}>{item.title}</h3>
-              <p style={{ fontSize: 13, color: "#666", margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        <AppleStepsStack />
       </section>
 
       {/* 2FA Validation Section */}
@@ -222,36 +194,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* Floating V2 Cinematic Landing Switcher Pill */}
-      <Link
-        href="/v2"
-        style={{
-          position: "fixed",
-          bottom: "24px",
-          right: "24px",
-          zIndex: 9999,
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          padding: "10px 18px",
-          borderRadius: "9999px",
-          background: "rgba(6, 11, 20, 0.9)",
-          border: "1px solid rgba(0, 255, 65, 0.45)",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(0,255,65,0.25)",
-          backdropFilter: "blur(16px)",
-          color: "#00ff41",
-          fontSize: "12px",
-          fontFamily: "'JetBrains Mono', monospace",
-          fontWeight: 600,
-          textDecoration: "none",
-          transition: "all 0.2s ease",
-          cursor: "pointer",
-        }}
-        className="hover:scale-105 active:scale-95"
-      >
-        <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#00ff41", display: "inline-block", boxShadow: "0 0 8px #00ff41" }} />
-        <span>PREVIEW V2: CINEMATIC LANDING ↗</span>
-      </Link>
+      
     </div>
   );
 }

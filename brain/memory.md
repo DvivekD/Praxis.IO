@@ -101,3 +101,19 @@
   - Confirmed 100% clean Next.js 16.2.6 Turbopack production build and strict TypeScript compilation (`tsc -p tsconfig.json --noEmit`).
 
 
+
+- **2026-11-06 (Cinematic V2 Landing Page & Component Synthesis)**:
+  - Ingested design philosophies from four repositories (`oil-ui`, `apple-design`, `transitions-dev`, and `ux-ui-agent-skills`).
+  - Synthesized Archon's scroll architecture (`https://oil-ui-gallery.vercel.app/works/archon/live/index.html`):
+    - Sub-pixel print grain canvas overlay (`PrintGrain.tsx`).
+    - Lateral stage guides with 120Hz gaze & ZK-SNARK coordinate measurement ticks.
+    - Centered visual protagonist with layered depth under massive display typography.
+    - Interactive Kernel Boot Terminal (`#install`) with OS/mode tabs (`Candidate CLI`, `360° Proctor Daemon`, `ZK Verifier`) and checkmark morph copy feedback.
+  - Tailored the 4 custom interactive components into Praxis:
+    - `AsciiWake.tsx`: Monochrome & emerald halftone isometric cube with reactive cursor heat-wake and click ripples.
+    - `ToastStack.tsx`: Spring-physics notification stack with real-time Praxis 360° telemetry, ZK-SNARK stamping, and Sev-1 incident injection events.
+    - `Watcher.tsx`: 360° AI Proctor observer eye with cursor gaze vector tracking, eye blink, and live proctor dialogue bubbles.
+    - `Particles.tsx`: Cryptographic Litmus Proof sandbox morphing between Circle, Square, Flower, and Shield with click shockwaves.
+  - Isolated on dedicated route `/v2` (`apps/web/app/v2/page.tsx`) with scoped stylesheet (`apps/web/components/V2/v2.css`).
+  - Added non-intrusive floating switcher pill on root (`/`) to seamlessly toggle between classic and cinematic v2 views.
+  - Successfully verified with `tsc --noEmit`, full Next.js 16.2.6 Turbopack production build, and deployed to live production (`https://praxis-iota-puce.vercel.app/v2`).
