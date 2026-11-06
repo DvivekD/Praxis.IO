@@ -5,8 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AsciiHeroButton } from "../components/AsciiHeroButton";
-import { StepsToastStack } from "../components/StepsToastStack";
-import { VerificationSignalsStage } from "../components/VerificationSignalsStage";
+import { ThreeVerificationBills } from "../components/ThreeVerificationBills";
 import { HeroAnimation } from "../components/HeroAnimation";
 
 export default function Home() {
@@ -126,7 +125,41 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <StepsToastStack />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+          {[
+            { step: "01", title: "Baseline Litmus", desc: "Lightweight domain filter. Minimum viable competency gets you in.", icon: "⚡" },
+            { step: "02", title: "Segmentation", desc: "Grouped by performance, not pedigree. Your baseline score sets your tier.", icon: "🎯" },
+            { step: "03", title: "Simulation Engine", desc: "Real problems, procedurally mutated. No two candidates see the same version.", icon: "🧬" },
+            { step: "04", title: "Cross-Domain", desc: "Same engine, domain-specific skins. Engineering, Product, Finance, Data.", icon: "🔀" },
+            { step: "05", title: "Process Ranking", desc: "Approach, creativity, error recovery. Not just correctness.", icon: "📊" },
+            { step: "06", title: "Portable Record", desc: "Your verified track record. LinkedIn but your profile is your proof.", icon: "🛡️" },
+          ].map((item, i) => (
+            <motion.div
+              key={item.step}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              onMouseEnter={() => setHoveredCard(item.step)}
+              onMouseLeave={() => setHoveredCard(null)}
+              style={{
+                padding: 28,
+                border: "1px solid",
+                borderColor: hoveredCard === item.step ? "#00ff41" : "#222",
+                background: hoveredCard === item.step ? "#001a08" : "#050505",
+                transition: "all 0.2s ease",
+                cursor: "pointer",
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+                <span style={{ fontSize: 24 }}>{item.icon}</span>
+                <span style={{ fontSize: 11, color: "#00ff41", fontWeight: 700 }}>[{item.step}]</span>
+              </div>
+              <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 10px", textTransform: "uppercase" }}>{item.title}</h3>
+              <p style={{ fontSize: 13, color: "#666", margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* 2FA Validation Section */}
@@ -138,7 +171,7 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <VerificationSignalsStage />
+        <ThreeVerificationBills />
       </section>
 
       {/* Footer CTA */}

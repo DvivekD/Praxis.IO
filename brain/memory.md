@@ -127,3 +127,11 @@
     - Default closed state: Apple Pay style stacked card deck with peeking layered cards and depth scale.
     - Hovered open state: Spring physics split (`stiffness: 380, damping: 32`) fanning out into all 6 cognitive pipeline steps.
   - Successfully verified with `tsc --noEmit`, full Next.js production build, and deployed to live production (`https://praxis-iota-puce.vercel.app/`).
+
+- **2026-11-06 (Landing Page Polish: Raw ASCII Shapes, 6-Step ToastStack, and 3D FoldingBill)**:
+  - Removed all separate rectangular card boxes and header tabs around the ASCII hero buttons.
+  - Placed bold, high-contrast, glowing `[ SEEKER ]` and `[ COMPANY ]` badges directly at the geometric center of the ASCII Circle and Cube shapes, floating seamlessly over the background.
+  - Implemented `StepsToastStack.tsx` utilizing the user's exact `ToastStack` Framer Motion spring physics engine (`{ type: "spring", stiffness: 380, damping: 34 }`), supporting all 6 steps (`SHOWN = 6`), peeking at rest and fanning out on hover.
+  - Implemented `FoldingBill.tsx` using the user's exact Three.js 3D WebGL Verlet-integrated cloth physics glass banknote simulation, allowing users to grab, fold, and drag the glass sheet in 3D.
+  - Built `VerificationSignalsStage.tsx` layering the 3 independent verification signals (`Reputation Network`, `Apprenticeship Market`, `Outcome Tracking`) over the interactive 3D Folding Glass cloth stage.
+  - Verified with `tsc --noEmit`, full Next.js production build, and deployed to live production (`https://praxis-iota-puce.vercel.app/`).
