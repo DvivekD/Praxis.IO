@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AsciiHeroButton } from "../components/AsciiHeroButton";
-import { ThreeVerificationBills } from "../components/ThreeVerificationBills";
 import { HeroAnimation } from "../components/HeroAnimation";
 
 export default function Home() {
@@ -171,7 +170,27 @@ export default function Home() {
           </div>
         </motion.div>
 
-        <ThreeVerificationBills />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
+          {[
+            { title: "Reputation Network", desc: "Past colleagues provide structured, accountable testimony tied to observable outcomes. Not endorsements — verified relational signal.", color: "#00ff41", icon: "🤝" },
+            { title: "Apprenticeship Market", desc: "Skip evaluation. Go straight to a 1-2 week paid trial. Real work, real environment. Outcome feeds your portable record.", color: "#fff", icon: "💼" },
+            { title: "Outcome Tracking", desc: "Post-hire performance data. Which simulation signals predicted success at your company? We close the loop.", color: "#888", icon: "📈" },
+          ].map((card, i) => (
+            <motion.div
+              key={card.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              style={{ padding: 32, border: "1px solid #222", background: "#050505", position: "relative", overflow: "hidden" }}
+            >
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: card.color }} />
+              <span style={{ fontSize: 32, display: "block", marginBottom: 16, filter: "grayscale(100%) brightness(200%)" }}>{card.icon}</span>
+              <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 10px", textTransform: "uppercase" }}>{card.title}</h3>
+              <p style={{ fontSize: 13, color: "#666", margin: 0, lineHeight: 1.7 }}>{card.desc}</p>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
       {/* Footer CTA */}

@@ -135,3 +135,10 @@
   - Implemented `FoldingBill.tsx` using the user's exact Three.js 3D WebGL Verlet-integrated cloth physics glass banknote simulation, allowing users to grab, fold, and drag the glass sheet in 3D.
   - Built `VerificationSignalsStage.tsx` layering the 3 independent verification signals (`Reputation Network`, `Apprenticeship Market`, `Outcome Tracking`) over the interactive 3D Folding Glass cloth stage.
   - Verified with `tsc --noEmit`, full Next.js production build, and deployed to live production (`https://praxis-iota-puce.vercel.app/`).
+
+- **2026-11-06 (Landing Page: Reverted 6 Steps & 3 Independent Folding Bills)**:
+  - Kept the borderless ASCII Circle (Seeker) and Isometric Cube (Company) hero buttons with centered badges.
+  - Reverted `SYSTEM.LOOP / 6 STEPS. ZERO GUESSWORK.` back to the clean 6 square boxes grid (`[01] BASELINE LITMUS` through `[06] PORTABLE RECORD`).
+  - Created `ThreeVerificationBills.tsx` rendering 3 independent 3D WebGL glass cloth physics sheets in `SYS.VERIFY / INDEPENDENT VERIFICATION SIGNALS`.
+  - Overlaid each signal's title, badge, icon, and description directly on top of each bill (`Reputation Network`, `Apprenticeship Market`, `Outcome Tracking`) with `pointerEvents: none` on text so users can directly touch, grab, drag, and fold the 3D glass sheet beneath each signal.
+  - Verified with `tsc --noEmit` (0 errors), Next.js Turbopack build, and deployed to live production (`https://praxis-iota-puce.vercel.app/`).
