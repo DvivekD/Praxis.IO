@@ -45,7 +45,16 @@
   - Refactored `SalesCallEnvironment.tsx` to serve as master Scope 2 coordinator with seamless sub-environment tabs and shared `SalesDealState`.
   - Created rigorous verification suite `apps/web/tests/test_scope2_sales.mjs` (AST zero-any checks, SSR component rendering, pricing & Deal Desk policy validation) — 100% passing.
   - Verified 100% clean Next.js 16.2.6 Turbopack production build and strict TypeScript compilation (`tsc -p tsconfig.json --noEmit`).
-- **2026-11-05 (Authentic Gmail Integration, Overlay Relocation & UI Decluttering)**:
+- **2026-11-06 (Anatomy Isometric Rig & Praxis Infrastructure Cluster)**:
+  - Replaced the generic spring/gauge calibration test rig with a custom **Isometric Distributed Infrastructure Apparatus** (`SYS.INFRA // ISO-01`) built specifically for Praxis workflow.
+  - Implemented 4 modular compute blades mounted on a server backplane with 100Gbps optical bus:
+    1. `BLADE 01`: Multimodal Telemetry & 360° Proctor Gateway (WebRTC P2P dual cameras, gaze vector, audio VAD).
+    2. `BLADE 02`: Procedural Incident Mutation Core (AST tree mutator, dynamic git worktree, chaos injector).
+    3. `BLADE 03`: Multi-Agent AI Observer & Reasoning Mesh (Stakeholder roleplay, behavioral telemetry, reasoning bus).
+    4. `BLADE 04`: Cryptographic Settlement & Verifier Ledger (Merkle proof tree, ZK skill attestation, portable record).
+  - Added interactive blade explorer: hover/click illuminates internal conduits, triggers optical bus flow, and updates live telemetry specs and diagnostic logs.
+  - Successfully deployed and verified on `https://praxis-iota-puce.vercel.app/` (HTTP 200).
+
   - **Relocated Cheat Sheet Overlay**: Moved `DemoPitchGuide.tsx` from `bottom: 16, right: 16` to `top: 18, right: 74` beside `JudgeMenu`, and converted modal to downwards dropdown to eliminate any collision with bottom controls, footers, and tab bars.
   - **Authentic Google Gmail Integration**: Deployed user's pixel-perfect Gmail web application to `apps/web/public/gmail/index.html` with full dark/light theme, rich composer, search, smart replies, and pre-loaded Black Friday triage dataset (Jordan Mitchell Sev-1, Marcus Vance VIP, Taylor Brooks CEO gift card, Chloe Zhao marketing blast, Dr. Chen drop-off alert).
   - **Bidirectional Telemetry Bridge**: Wired `postMessage` between Gmail iframe and `GmailInboxSubEnv.tsx` to record triage decisions, smart reply clicks, and dispatch the Black Friday Launch Protocol.
