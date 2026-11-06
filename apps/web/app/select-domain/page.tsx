@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -119,7 +120,7 @@ export default function SelectDomainPage() {
         minHeight: "100vh",
         background: "#030712",
         color: "#f8fafc",
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        fontFamily: "'JetBrains Mono', monospace",
         position: "relative",
         overflowX: "hidden",
       }}
@@ -164,7 +165,7 @@ export default function SelectDomainPage() {
         />
       </div>
 
-      {/* Swiss Top Navigation Bar */}
+      {/* Swiss Top Navigation Bar with Clickable ASCII PRAXIS Logo */}
       <div
         style={{
           position: "relative",
@@ -177,41 +178,86 @@ export default function SelectDomainPage() {
           backdropFilter: "blur(20px)",
           WebkitBackdropFilter: "blur(20px)",
           background: "rgba(3, 7, 18, 0.5)",
+          flexWrap: "wrap",
+          gap: 16,
         }}
       >
-        <button
-          onClick={() => router.push("/")}
+        <Link
+          href="/"
           style={{
-            background: "rgba(255, 255, 255, 0.04)",
-            border: "1px solid rgba(255, 255, 255, 0.1)",
-            borderRadius: 8,
-            padding: "8px 14px",
-            color: "#94a3b8",
-            cursor: "pointer",
-            fontSize: 12,
-            fontWeight: 600,
-            display: "flex",
+            textDecoration: "none",
+            display: "inline-flex",
             alignItems: "center",
-            gap: 8,
+            gap: 12,
+            padding: "8px 14px",
+            background: "rgba(10, 16, 28, 0.75)",
+            border: "1px solid rgba(0, 255, 65, 0.35)",
+            borderRadius: 8,
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            boxShadow: "inset 0 1px 0 0 rgba(0, 255, 65, 0.2), 0 8px 24px rgba(0, 0, 0, 0.6)",
+            cursor: "pointer",
             transition: "all 0.2s ease",
-            boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.08)",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#fff";
-            e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.25)";
-            e.currentTarget.style.background = "rgba(255, 255, 255, 0.08)";
+            e.currentTarget.style.borderColor = "#00ff41";
+            e.currentTarget.style.boxShadow =
+              "inset 0 1px 0 0 rgba(0, 255, 65, 0.4), 0 12px 30px rgba(0, 255, 65, 0.35)";
+            e.currentTarget.style.transform = "translateY(-1px)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#94a3b8";
-            e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
-            e.currentTarget.style.background = "rgba(255, 255, 255, 0.04)";
+            e.currentTarget.style.borderColor = "rgba(0, 255, 65, 0.35)";
+            e.currentTarget.style.boxShadow =
+              "inset 0 1px 0 0 rgba(0, 255, 65, 0.2), 0 8px 24px rgba(0, 0, 0, 0.6)";
+            e.currentTarget.style.transform = "none";
           }}
+          title="Return to Praxis Landing Page"
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M19 12H5M12 19l-7-7 7-7" />
-          </svg>
-          Back to Main Overview
-        </button>
+          <pre
+            style={{
+              margin: 0,
+              fontSize: 8,
+              lineHeight: 1.1,
+              color: "#00ff41",
+              fontFamily: "'JetBrains Mono', monospace",
+              textShadow: "0 0 8px rgba(0, 255, 65, 0.6)",
+              userSelect: "none",
+              letterSpacing: "-0.5px",
+            }}
+          >
+{`  ┌───┐
+ ┌┘ P └┐
+┌┘ R A X └┐
+│  I S .  │
+└┐ I O ┌┘
+ └┐ . ┌┘
+  └───┘`}
+          </pre>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 15, fontWeight: 900, color: "#fff", letterSpacing: "2px", lineHeight: 1 }}>
+                PRAXIS
+              </span>
+              <span
+                style={{
+                  fontSize: 9,
+                  padding: "2px 6px",
+                  background: "rgba(0, 255, 65, 0.15)",
+                  color: "#00ff41",
+                  borderRadius: 4,
+                  fontWeight: 700,
+                  border: "1px solid rgba(0, 255, 65, 0.3)",
+                  letterSpacing: "0.5px",
+                }}
+              >
+                ASCII.NAV
+              </span>
+            </div>
+            <span style={{ fontSize: 9.5, color: "#94a3b8", letterSpacing: "0.5px", marginTop: 2 }}>
+              &lt; RETURN_TO_HOME
+            </span>
+          </div>
+        </Link>
 
         <div
           style={{

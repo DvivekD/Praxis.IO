@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Suspense, useState, useEffect } from "react";
@@ -17,19 +18,19 @@ export default function SeekerDashboard() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontFamily: "'Inter', sans-serif",
-            color: "#38bdf8",
-            fontSize: 14,
-            fontWeight: 600,
-            letterSpacing: "0.05em",
+            fontFamily: "'JetBrains Mono', monospace",
+            color: "#00ff41",
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: "0.1em",
           }}
         >
           <div
             style={{
               padding: "24px 36px",
               background: "rgba(15, 23, 42, 0.65)",
-              border: "1px solid rgba(56, 189, 248, 0.3)",
-              borderRadius: 16,
+              border: "1px solid rgba(0, 255, 65, 0.3)",
+              borderRadius: 12,
               backdropFilter: "blur(20px)",
               boxShadow: "0 20px 50px rgba(0,0,0,0.6)",
               display: "flex",
@@ -42,11 +43,11 @@ export default function SeekerDashboard() {
                 width: 8,
                 height: 8,
                 borderRadius: "50%",
-                background: "#38bdf8",
-                boxShadow: "0 0 10px #38bdf8",
+                background: "#00ff41",
+                boxShadow: "0 0 10px #00ff41",
               }}
             />
-            INITIALIZING CANDIDATE ASSIGNMENT PORTAL...
+            [ INITIALIZING_CANDIDATE_ASSIGNMENT_PORTAL... ]
           </div>
         </div>
       }
@@ -174,14 +175,13 @@ function SeekerDashboardContent() {
         minHeight: "100vh",
         background: "#030712",
         color: "#f8fafc",
-        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+        fontFamily: "'JetBrains Mono', monospace",
         position: "relative",
         overflowX: "hidden",
       }}
     >
-      {/* Swiss Multi-Point Ambient Glass Glow Background */}
+      {/* Multi-Point Ambient Glass Glow Background */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
-        {/* Cyan Ambient Spotlight */}
         <div
           style={{
             position: "absolute",
@@ -193,7 +193,6 @@ function SeekerDashboardContent() {
             filter: "blur(140px)",
           }}
         />
-        {/* Violet Ambient Backlight */}
         <div
           style={{
             position: "absolute",
@@ -205,7 +204,6 @@ function SeekerDashboardContent() {
             filter: "blur(150px)",
           }}
         />
-        {/* Subtle Accent Glow */}
         <div
           style={{
             position: "absolute",
@@ -219,58 +217,101 @@ function SeekerDashboardContent() {
         />
       </div>
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto", padding: "40px 24px 100px" }}>
-        {/* Swiss Top Control Navigation */}
+      <div style={{ position: "relative", zIndex: 1, maxWidth: 1200, margin: "0 auto", padding: "36px 24px 100px" }}>
+        {/* Top Control Bar with Clickable ASCII Logo */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             paddingBottom: 24,
-            marginBottom: 36,
+            marginBottom: 32,
             borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
             flexWrap: "wrap",
             gap: 16,
           }}
         >
-          <div>
-            <div
+          {/* Top Left: Clickable ASCII PRAXIS Logo */}
+          <Link
+            href="/"
+            style={{
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 14,
+              padding: "8px 16px",
+              background: "rgba(10, 16, 28, 0.75)",
+              border: "1px solid rgba(0, 255, 65, 0.35)",
+              borderRadius: 10,
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              boxShadow: "inset 0 1px 0 0 rgba(0, 255, 65, 0.2), 0 8px 24px rgba(0, 0, 0, 0.6)",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "#00ff41";
+              e.currentTarget.style.boxShadow =
+                "inset 0 1px 0 0 rgba(0, 255, 65, 0.4), 0 12px 30px rgba(0, 255, 65, 0.35)";
+              e.currentTarget.style.transform = "translateY(-1px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "rgba(0, 255, 65, 0.35)";
+              e.currentTarget.style.boxShadow =
+                "inset 0 1px 0 0 rgba(0, 255, 65, 0.2), 0 8px 24px rgba(0, 0, 0, 0.6)";
+              e.currentTarget.style.transform = "none";
+            }}
+            title="Click to return to Praxis Landing Page"
+          >
+            {/* ASCII Isometric Emblem */}
+            <pre
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                fontSize: 11,
-                fontWeight: 700,
-                color: scopeColor,
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                marginBottom: 8,
-              }}
-            >
-              <span
-                style={{
-                  width: 7,
-                  height: 7,
-                  borderRadius: "50%",
-                  background: scopeColor,
-                  boxShadow: `0 0 10px ${scopeColor}`,
-                }}
-              />
-              SIMULATION ENGINE // CANDIDATE PORTAL
-            </div>
-            <h1
-              style={{
-                fontSize: 32,
-                fontWeight: 900,
-                letterSpacing: "-0.03em",
-                color: "#ffffff",
                 margin: 0,
+                fontSize: 8.5,
+                lineHeight: 1.1,
+                color: "#00ff41",
+                fontFamily: "'JetBrains Mono', monospace",
+                textShadow: "0 0 8px rgba(0, 255, 65, 0.6)",
+                userSelect: "none",
+                letterSpacing: "-0.5px",
               }}
             >
-              Candidate Assignment Portal
-            </h1>
-          </div>
+{`  ┌───┐
+ ┌┘ P └┐
+┌┘ R A X └┐
+│  I S .  │
+└┐ I O ┌┘
+ └┐ . ┌┘
+  └───┘`}
+            </pre>
 
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 16, fontWeight: 900, color: "#fff", letterSpacing: "2px", lineHeight: 1 }}>
+                  PRAXIS
+                </span>
+                <span
+                  style={{
+                    fontSize: 9,
+                    padding: "2px 6px",
+                    background: "rgba(0, 255, 65, 0.15)",
+                    color: "#00ff41",
+                    borderRadius: 4,
+                    fontWeight: 700,
+                    border: "1px solid rgba(0, 255, 65, 0.3)",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  ASCII.NAV
+                </span>
+              </div>
+              <span style={{ fontSize: 10, color: "#94a3b8", letterSpacing: "0.5px", marginTop: 3 }}>
+                &lt; RETURN_TO_HOME
+              </span>
+            </div>
+          </Link>
+
+          {/* Top Right: All Arenas button & Scope Badge */}
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <button
               onClick={() => router.push("/select-domain")}
@@ -281,8 +322,9 @@ function SeekerDashboardContent() {
                 padding: "8px 14px",
                 color: "#94a3b8",
                 cursor: "pointer",
-                fontSize: 12,
-                fontWeight: 600,
+                fontSize: 11,
+                fontWeight: 700,
+                fontFamily: "'JetBrains Mono', monospace",
                 display: "flex",
                 alignItems: "center",
                 gap: 6,
@@ -300,7 +342,7 @@ function SeekerDashboardContent() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
               </svg>
-              All Arenas
+              [ ALL_ARENAS ]
             </button>
 
             <div
@@ -308,32 +350,72 @@ function SeekerDashboardContent() {
                 background: "rgba(255, 255, 255, 0.04)",
                 border: `1px solid ${scopeColor}40`,
                 padding: "6px 14px",
-                borderRadius: 20,
+                borderRadius: 8,
                 fontSize: 11,
                 fontWeight: 700,
                 color: scopeColor,
-                letterSpacing: "0.04em",
+                letterSpacing: "0.05em",
                 backdropFilter: "blur(12px)",
               }}
             >
-              {activeScope.label.toUpperCase()} · 3 SUB-ENVIRONMENTS
+              {activeScope.label.toUpperCase()} // 3 SUB-ENVIRONMENTS
             </div>
           </div>
         </div>
 
-        {/* 7 Scope Switcher Tabs - Swiss Glass Segmented Control */}
-        <div style={{ marginBottom: 32 }}>
+        {/* Header Title Bar */}
+        <div style={{ marginBottom: 28 }}>
           <div
             style={{
-              fontSize: 10.5,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              fontSize: 11,
+              fontWeight: 700,
+              color: scopeColor,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              marginBottom: 8,
+            }}
+          >
+            <span
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: scopeColor,
+                boxShadow: `0 0 8px ${scopeColor}`,
+              }}
+            />
+            [ SYS.ACTIVE // AURA COMMERCE SIMULATION ENGINE ]
+          </div>
+          <h1
+            style={{
+              fontSize: 28,
+              fontWeight: 900,
+              letterSpacing: "-0.01em",
+              color: "#ffffff",
+              margin: 0,
+              textTransform: "uppercase",
+            }}
+          >
+            CANDIDATE ASSIGNMENT PORTAL
+          </h1>
+        </div>
+
+        {/* 7 Scope Switcher Tabs - Glass Segmented Control */}
+        <div style={{ marginBottom: 28 }}>
+          <div
+            style={{
+              fontSize: 10,
               fontWeight: 700,
               color: "#64748b",
               textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              marginBottom: 12,
+              letterSpacing: "0.1em",
+              marginBottom: 10,
             }}
           >
-            Select Operational Scope (7 Total):
+            SELECT OPERATIONAL SCOPE (7 TOTAL):
           </div>
 
           <div
@@ -344,7 +426,7 @@ function SeekerDashboardContent() {
               padding: 4,
               background: "rgba(10, 16, 28, 0.5)",
               border: "1px solid rgba(255, 255, 255, 0.08)",
-              borderRadius: 14,
+              borderRadius: 10,
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
             }}
@@ -360,23 +442,21 @@ function SeekerDashboardContent() {
                     router.push(`/seeker/dashboard?domain=${key}`);
                   }}
                   style={{
-                    padding: "11px 12px",
-                    background: isSelected
-                      ? "rgba(255, 255, 255, 0.08)"
-                      : "transparent",
+                    padding: "10px 10px",
+                    background: isSelected ? "rgba(255, 255, 255, 0.08)" : "transparent",
                     color: isSelected ? "#ffffff" : "#94a3b8",
-                    border: isSelected
-                      ? `1px solid ${scopeDef.accent}60`
-                      : "1px solid transparent",
-                    borderRadius: 10,
-                    fontSize: 12,
-                    fontWeight: isSelected ? 700 : 500,
+                    border: isSelected ? `1px solid ${scopeDef.accent}` : "1px solid transparent",
+                    borderRadius: 6,
+                    fontSize: 11,
+                    fontWeight: isSelected ? 800 : 600,
                     cursor: "pointer",
                     transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    gap: 8,
+                    gap: 6,
+                    textTransform: "uppercase",
+                    fontFamily: "'JetBrains Mono', monospace",
                     boxShadow: isSelected
                       ? `inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 4px 14px ${scopeDef.accent}20`
                       : "none",
@@ -396,11 +476,11 @@ function SeekerDashboardContent() {
                 >
                   <span
                     style={{
-                      width: 6,
-                      height: 6,
+                      width: 5,
+                      height: 5,
                       borderRadius: "50%",
                       background: scopeDef.accent,
-                      boxShadow: isSelected ? `0 0 8px ${scopeDef.accent}` : "none",
+                      boxShadow: isSelected ? `0 0 6px ${scopeDef.accent}` : "none",
                     }}
                   />
                   <span>{scopeDef.label}</span>
@@ -410,78 +490,80 @@ function SeekerDashboardContent() {
           </div>
         </div>
 
-        {/* Challenge Source Switcher - Swiss Glass Pill Bar */}
+        {/* Challenge Source Switcher */}
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            marginBottom: 24,
+            marginBottom: 20,
             flexWrap: "wrap",
             gap: 12,
           }}
         >
           <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-              Challenge Mode:
+              SELECT CHALLENGE:
             </span>
 
             {/* Company Bounty Button */}
             <button
               onClick={() => setChallengeSource("company")}
               style={{
-                padding: "9px 18px",
+                padding: "8px 16px",
                 background:
                   challengeSource === "company"
                     ? "linear-gradient(135deg, rgba(0, 255, 65, 0.18) 0%, rgba(0, 255, 65, 0.08) 100%)"
                     : "rgba(255, 255, 255, 0.03)",
                 color: challengeSource === "company" ? "#00ff41" : "#94a3b8",
                 border: challengeSource === "company" ? "1.5px solid #00ff41" : "1px solid rgba(255, 255, 255, 0.08)",
-                borderRadius: 8,
-                fontWeight: 700,
-                fontSize: 12,
+                borderRadius: 6,
+                fontWeight: 800,
+                fontSize: 11,
                 cursor: "pointer",
+                fontFamily: "'JetBrains Mono', monospace",
                 boxShadow:
                   challengeSource === "company"
                     ? "inset 0 1px 0 0 rgba(0, 255, 65, 0.3), 0 8px 24px rgba(0, 255, 65, 0.25)"
                     : "none",
                 display: "flex",
                 alignItems: "center",
-                gap: 8,
+                gap: 6,
                 transition: "all 0.2s ease",
               }}
             >
               <span>⚡</span>
-              <span>{activeCompanyProblem.companyName} (Company Submitted)</span>
+              <span>{activeCompanyProblem.companyName.toUpperCase()} (COMPANY SUBMITTED)</span>
             </button>
 
             {/* Standard Benchmark Button */}
             <button
               onClick={() => setChallengeSource("standard")}
               style={{
-                padding: "9px 18px",
+                padding: "8px 16px",
                 background:
                   challengeSource === "standard"
                     ? "rgba(255, 255, 255, 0.1)"
                     : "rgba(255, 255, 255, 0.03)",
                 color: challengeSource === "standard" ? "#ffffff" : "#94a3b8",
                 border: challengeSource === "standard" ? "1px solid rgba(255, 255, 255, 0.25)" : "1px solid rgba(255, 255, 255, 0.08)",
-                borderRadius: 8,
-                fontWeight: 600,
-                fontSize: 12,
+                borderRadius: 6,
+                fontWeight: 700,
+                fontSize: 11,
                 cursor: "pointer",
+                fontFamily: "'JetBrains Mono', monospace",
                 boxShadow:
                   challengeSource === "standard"
                     ? "inset 0 1px 0 0 rgba(255, 255, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.5)"
                     : "none",
                 display: "flex",
                 alignItems: "center",
-                gap: 8,
+                gap: 6,
                 transition: "all 0.2s ease",
               }}
             >
               <span>🏢</span>
-              <span>Aura Commerce (Standard Benchmark)</span>
+              <span>AURA COMMERCE (STANDARD BENCHMARK)</span>
             </button>
           </div>
 
@@ -494,11 +576,12 @@ function SeekerDashboardContent() {
                 color: "#00ff41",
                 border: "1px solid rgba(0, 255, 65, 0.4)",
                 padding: "8px 14px",
-                fontSize: 12,
-                fontWeight: 600,
+                fontSize: 11,
+                fontWeight: 700,
+                fontFamily: "'JetBrains Mono', monospace",
                 outline: "none",
                 cursor: "pointer",
-                borderRadius: 8,
+                borderRadius: 6,
                 backdropFilter: "blur(16px)",
               }}
             >
@@ -511,15 +594,15 @@ function SeekerDashboardContent() {
           )}
         </div>
 
-        {/* Master Project Brief Card - Swiss Glass Container */}
+        {/* Master Project Brief Card - Glass Container */}
         <div
           style={{
             background: "rgba(10, 16, 30, 0.65)",
-            border: `1px solid ${scopeColor}40`,
-            borderRadius: 18,
-            padding: "28px 32px",
-            marginBottom: 36,
-            boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 30px ${scopeColor}15`,
+            border: `1.5px solid ${scopeColor}40`,
+            borderRadius: 12,
+            padding: "24px 28px",
+            marginBottom: 32,
+            boxShadow: `inset 0 1px 0 0 rgba(255, 255, 255, 0.15), 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px ${scopeColor}15`,
             backdropFilter: "blur(28px) saturate(180%)",
             WebkitBackdropFilter: "blur(28px) saturate(180%)",
           }}
@@ -529,39 +612,39 @@ function SeekerDashboardContent() {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "flex-start",
-              marginBottom: 14,
+              marginBottom: 12,
               flexWrap: "wrap",
               gap: 16,
             }}
           >
             <div>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
                 <span
                   style={{
                     fontSize: 10,
-                    padding: "3px 10px",
+                    padding: "3px 8px",
                     borderRadius: 4,
                     background: challengeSource === "company" ? "#00ff41" : `${scopeColor}25`,
                     color: challengeSource === "company" ? "#030712" : scopeColor,
-                    fontWeight: 800,
+                    fontWeight: 900,
                     letterSpacing: "0.06em",
                   }}
                 >
                   {challengeSource === "company"
-                    ? `LIVE BOUNTY // ${activeCompanyProblem.companyName.toUpperCase()}`
-                    : "OPERATIONAL BRIEF"}
+                    ? `⚡ ${activeCompanyProblem.companyName.toUpperCase()} // COMPANY SUBMITTED`
+                    : "PROJECT BRIEF"}
                 </span>
 
                 {challengeSource === "company" && activeCompanyProblem.blastRadius && (
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: 10,
                       padding: "2px 8px",
                       background: "rgba(255, 255, 255, 0.05)",
                       border: "1px solid rgba(255, 255, 255, 0.1)",
                       borderRadius: 4,
                       color: "#94a3b8",
-                      fontWeight: 500,
+                      fontWeight: 600,
                     }}
                   >
                     {activeCompanyProblem.blastRadius}
@@ -571,11 +654,11 @@ function SeekerDashboardContent() {
 
               <h2
                 style={{
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: 900,
                   color: "#fff",
-                  margin: "0 0 6px",
-                  letterSpacing: "-0.02em",
+                  margin: "4px 0",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 {challengeSource === "company"
@@ -591,23 +674,23 @@ function SeekerDashboardContent() {
                 color: scopeColor,
                 border: `1px solid ${scopeColor}35`,
                 background: `${scopeColor}10`,
-                padding: "6px 14px",
-                borderRadius: 20,
-                letterSpacing: "0.04em",
+                padding: "4px 10px",
+                borderRadius: 4,
+                letterSpacing: "0.05em",
               }}
             >
-              3 SUB-ENVIRONMENTS AVAILABLE
+              3 SUB-ENVIRONMENTS
             </div>
           </div>
 
-          <p style={{ fontSize: 14, color: "#94a3b8", margin: 0, lineHeight: 1.65, maxWidth: 900 }}>
+          <p style={{ fontSize: 13, color: "#94a3b8", margin: 0, lineHeight: 1.6, maxWidth: 900 }}>
             {challengeSource === "company"
               ? activeCompanyProblem.incidentOverview
               : activeScope.projectOverview}
           </p>
         </div>
 
-        {/* 3 Sub-Environments - Interactive Swiss Glass List */}
+        {/* 3 Sub-Environments - Interactive Glass Modules */}
         <div>
           <div
             style={{
@@ -615,19 +698,14 @@ function SeekerDashboardContent() {
               fontWeight: 700,
               color: "#94a3b8",
               textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              marginBottom: 16,
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
+              letterSpacing: "0.1em",
+              marginBottom: 14,
             }}
           >
-            <span>Available Sub-Environments</span>
-            <span style={{ opacity: 0.4 }}>/</span>
-            <span style={{ color: scopeColor }}>Select Any Stage to Launch</span>
+            &gt; AVAILABLE_SUB_ENVIRONMENTS (CHOOSE ANY TO LAUNCH):
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             {(challengeSource === "company"
               ? activeCompanyProblem.subEnvironments || activeScope.subEnvironments
               : activeScope.subEnvironments
@@ -638,43 +716,43 @@ function SeekerDashboardContent() {
               return (
                 <motion.div
                   key={sub.id || sub.subEnv}
-                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                  whileHover={{ y: -2, transition: { duration: 0.15 } }}
                   style={{
-                    padding: "26px 28px",
+                    padding: "22px 24px",
                     background: "rgba(10, 16, 30, 0.55)",
                     border: `1px solid rgba(255, 255, 255, 0.08)`,
-                    borderRadius: 16,
+                    borderRadius: 12,
                     backdropFilter: "blur(20px)",
                     WebkitBackdropFilter: "blur(20px)",
-                    boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 16px 40px rgba(0, 0, 0, 0.5)",
+                    boxShadow: "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 12px 32px rgba(0, 0, 0, 0.5)",
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    gap: 24,
+                    gap: 20,
                     cursor: "pointer",
                     transition: "border-color 0.2s, box-shadow 0.2s, background 0.2s",
                     flexWrap: "wrap",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = `${cardAccent}70`;
-                    e.currentTarget.style.boxShadow = `inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 20px 50px ${cardAccent}20`;
+                    e.currentTarget.style.boxShadow = `inset 0 1px 0 0 rgba(255, 255, 255, 0.18), 0 16px 40px ${cardAccent}20`;
                     e.currentTarget.style.background = "rgba(12, 20, 38, 0.7)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.08)";
-                    e.currentTarget.style.boxShadow = "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 16px 40px rgba(0, 0, 0, 0.5)";
+                    e.currentTarget.style.boxShadow = "inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 12px 32px rgba(0, 0, 0, 0.5)";
                     e.currentTarget.style.background = "rgba(10, 16, 30, 0.55)";
                   }}
                   onClick={() => handleLaunchSubEnv(sub.subEnv, sub.skinType || "ide")}
                 >
-                  <div style={{ flex: 1, minWidth: 320 }}>
-                    {/* Top Pill Badges */}
-                    <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 12 }}>
+                  <div style={{ flex: 1, minWidth: 300 }}>
+                    {/* Top Badges */}
+                    <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 10 }}>
                       <span
                         style={{
                           fontSize: 10,
-                          padding: "3px 9px",
-                          borderRadius: 6,
+                          padding: "2px 8px",
+                          borderRadius: 4,
                           background: `${cardAccent}20`,
                           color: cardAccent,
                           border: `1px solid ${cardAccent}50`,
@@ -689,28 +767,27 @@ function SeekerDashboardContent() {
                           fontSize: 11,
                           color: "#64748b",
                           fontWeight: 600,
-                          padding: "2px 8px",
-                          borderRadius: 6,
+                          padding: "2px 6px",
+                          borderRadius: 4,
                           background: "rgba(255, 255, 255, 0.03)",
                         }}
                       >
-                        {sub.envType || "CLI / REMOTE TERMINAL"}
+                        [ {(sub.envType || "CLI / REMOTE TERMINAL").toUpperCase()} ]
                       </span>
                     </div>
 
                     <h3
                       style={{
-                        fontSize: 18,
+                        fontSize: 16,
                         color: "#fff",
                         fontWeight: 800,
-                        margin: "0 0 8px",
-                        letterSpacing: "-0.01em",
+                        margin: "0 0 6px",
                       }}
                     >
                       {sub.title}
                     </h3>
 
-                    <div style={{ fontSize: 13.5, color: "#94a3b8", marginBottom: 14, lineHeight: 1.6 }}>
+                    <div style={{ fontSize: 13, color: "#94a3b8", marginBottom: 12, lineHeight: 1.5 }}>
                       {sub.description}
                     </div>
 
@@ -718,15 +795,15 @@ function SeekerDashboardContent() {
                     <div
                       style={{
                         background: "rgba(0, 0, 0, 0.35)",
-                        padding: "12px 16px",
-                        borderRadius: 10,
+                        padding: "10px 14px",
+                        borderRadius: 6,
                         border: "1px solid rgba(255, 255, 255, 0.06)",
-                        fontSize: 12.5,
+                        fontSize: 11.5,
                         color: "#cbd5e1",
                         lineHeight: 1.6,
                       }}
                     >
-                      <strong style={{ color: cardAccent, fontWeight: 700 }}>Problem: </strong>
+                      <strong style={{ color: cardAccent, fontWeight: 700 }}>Problem Statement: </strong>
                       {sub.problemStatement}
                     </div>
                   </div>
@@ -738,42 +815,42 @@ function SeekerDashboardContent() {
                       flexDirection: "column",
                       alignItems: "flex-end",
                       gap: 8,
-                      minWidth: 180,
+                      minWidth: 160,
                     }}
                   >
                     <button
                       disabled={isLoadingThis}
                       style={{
-                        padding: "13px 24px",
+                        padding: "12px 20px",
                         background: cardAccent,
                         color: "#030712",
-                        fontWeight: 800,
-                        fontSize: 12.5,
-                        borderRadius: 8,
+                        fontWeight: 900,
+                        fontSize: 11.5,
+                        borderRadius: 6,
                         border: "none",
                         cursor: isLoadingThis ? "not-allowed" : "pointer",
                         display: "flex",
                         alignItems: "center",
-                        gap: 8,
-                        boxShadow: `0 8px 24px ${cardAccent}40`,
+                        gap: 6,
+                        fontFamily: "'JetBrains Mono', monospace",
+                        boxShadow: `0 6px 20px ${cardAccent}40`,
                         letterSpacing: "0.02em",
                         transition: "all 0.2s ease",
                       }}
                       onMouseEnter={(e) => {
                         if (!isLoadingThis) {
-                          e.currentTarget.style.boxShadow = `0 12px 30px ${cardAccent}60`;
+                          e.currentTarget.style.boxShadow = `0 10px 25px ${cardAccent}60`;
                         }
                       }}
                       onMouseLeave={(e) => {
                         if (!isLoadingThis) {
-                          e.currentTarget.style.boxShadow = `0 8px 24px ${cardAccent}40`;
+                          e.currentTarget.style.boxShadow = `0 6px 20px ${cardAccent}40`;
                         }
                       }}
                     >
-                      <span>{isLoadingThis ? "INITIALIZING..." : `LAUNCH SUB-ENV 0${sub.subEnv}`}</span>
-                      <span>→</span>
+                      <span>{isLoadingThis ? "INITIALIZING..." : `LAUNCH SUB-ENV 0${sub.subEnv} ▶`}</span>
                     </button>
-                    <span style={{ fontSize: 11, color: "#64748b", fontWeight: 600 }}>
+                    <span style={{ fontSize: 10, color: "#64748b", fontWeight: 600 }}>
                       Mode: {(sub.skinType || "ide").toUpperCase()}
                     </span>
                   </div>
