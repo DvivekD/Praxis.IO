@@ -117,3 +117,13 @@
   - Isolated on dedicated route `/v2` (`apps/web/app/v2/page.tsx`) with scoped stylesheet (`apps/web/components/V2/v2.css`).
   - Added non-intrusive floating switcher pill on root (`/`) to seamlessly toggle between classic and cinematic v2 views.
   - Successfully verified with `tsc --noEmit`, full Next.js 16.2.6 Turbopack production build, and deployed to live production (`https://praxis-iota-puce.vercel.app/v2`).
+
+- **2026-11-06 (Landing Page Component Integration)**:
+  - Removed the floating V2 preview pill from `apps/web/app/page.tsx`.
+  - Replaced hero buttons with interactive ASCII components in `AsciiHeroButton.tsx`:
+    - **Seeker**: Glowing neon emerald **Circle ASCII** halftone with pointer heat-wake and centered `[ I'M A SEEKER ]` badge.
+    - **Company**: Sleek cyan **Cube ASCII** halftone with pointer heat-wake and centered `[ I'M A COMPANY ]` badge.
+  - Implemented `AppleStepsStack.tsx` replacing the static 6-card grid:
+    - Default closed state: Apple Pay style stacked card deck with peeking layered cards and depth scale.
+    - Hovered open state: Spring physics split (`stiffness: 380, damping: 32`) fanning out into all 6 cognitive pipeline steps.
+  - Successfully verified with `tsc --noEmit`, full Next.js production build, and deployed to live production (`https://praxis-iota-puce.vercel.app/`).

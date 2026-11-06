@@ -18,27 +18,23 @@ const RING_S = 1.8;
 interface AsciiHeroButtonProps {
   shape: "circle" | "cube";
   label: string;
-  sublabel?: string;
   href: string;
   color?: string;
-  width?: number;
-  height?: number;
+  size?: number;
 }
 
 export function AsciiHeroButton({
   shape = "circle",
   label = "SEEKER",
-  sublabel = "CANDIDATE SANDBOX",
   href = "/seeker/onboarding",
   color = "#00ff41",
-  width = 280,
-  height = 180,
+  size = 220,
 }: AsciiHeroButtonProps) {
   const router = useRouter();
   const cv = useRef<HTMLCanvasElement>(null);
-  const W = width;
-  const H = height;
-  const size = 9;
+  const W = size;
+  const H = size;
+  const glyphSize = 9;
 
   const st = useRef({
     cols: 0,
@@ -63,16 +59,24 @@ export function AsciiHeroButton({
     ratio: 1,
   });
 
-  // Cube shape math
+  // Isometric Cube shape
   const cube = (x: number, y: number) => {
     const lit = (v: number) => 0.35 + 0.65 * clamp(v, 0, 1);
-    const R = Math.min(W, H) * 0.42;
+    const R = size * 0.44;
     const c = Math.cos(Math.PI / 6) * R;
     const h = R / 2;
-    const T = [0, -R], UR = [c, -h], B = [0, R], LL = [-c, h], UL = [-c, -h];
+    const T = [0, -R],
+      UR = [c, -h],
+      B = [0, R],
+      LL = [-c, h],
+      UL = [-c, -h];
     const along = (o: number[], p: number[], q: number[]) => {
-      const ax = p[0] - o[0], ay = p[1] - o[1], bx = q[0] - o[0], by = q[1] - o[1];
-      const dx = x - o[0], dy = y - o[1];
+      const ax = p[0] - o[0],
+        ay = p[1] - o[1],
+        bx = q[0] - o[0],
+        by = q[1] - o[1];
+      const dx = x - o[0],
+        dy = y - o[1];
       const det = ax * by - ay * bx;
       return [(dx * by - dy * bx) / det, (ax * dy - ay * dx) / det];
     };
@@ -82,7 +86,7 @@ export function AsciiHeroButton({
     const top = along(T, UR, UL);
     if (inside(top)) {
       const [s, t] = top;
-      return seam(1 - s) || seam(1 - t) ? 1 : lit(0.96 - 0.1 * (s + t) / 2);
+      return seam(1 - s) || seam(1 - t) ? 1 : lit(0.96 - 0.1 * ((s + t) / 2));
     }
     const left = along(UL, [0, 0], LL);
     if (inside(left)) {
@@ -92,18 +96,18 @@ export function AsciiHeroButton({
     const right = along([0, 0], UR, B);
     if (inside(right)) {
       const [s, t] = right;
-      return seam(s) || seam(t) ? 1 : lit(0.22 - 0.05 * s);
+      return seam(s) || seam(t) ? 1 : lit(0.24 - 0.05 * s);
     }
     return 0;
   };
 
-  // Circle shape math
+  // Spherical Circle shape
   const circle = (x: number, y: number) => {
     const lit = (v: number) => 0.35 + 0.65 * clamp(v, 0, 1);
-    const R = Math.min(W, H) * 0.42;
+    const R = size * 0.44;
     const d = Math.hypot(x, y);
     if (d > R) return 0;
-    if (d >= R - 3) return 1;
+    if (d >= R - 2.5) return 1;
     const sphereGrad = Math.sqrt(Math.max(0, 1 - (d / R) ** 2));
     return lit(sphereGrad);
   };
@@ -117,11 +121,11 @@ export function AsciiHeroButton({
     c.width = Math.round(W * r);
     c.height = Math.round(H * r);
 
-    s.ch = size * 0.85;
-    s.cw = size * 0.65;
+    s.ch = glyphSize * 0.85;
+    s.cw = glyphSize * 0.65;
     s.cols = Math.floor(W / s.cw - 0.5);
     s.rows = Math.floor(H / s.ch);
-    s.font = `600 ${size}px ${MONO}`;
+    s.font = `600 ${glyphSize}px ${MONO}`;
     s.heat = new Float32Array(s.cols * s.rows);
     s.mask = new Float32Array(s.cols * s.rows);
 
@@ -250,7 +254,7 @@ export function AsciiHeroButton({
     return () => {
       if (st.current.raf) cancelAnimationFrame(st.current.raf);
     };
-  }, [shape, width, height]);
+  }, [shape, size]);
 
   const where = (e: React.PointerEvent) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -297,14 +301,13 @@ export function AsciiHeroButton({
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") router.push(href);
       }}
-      className="group relative flex flex-col items-center justify-center p-3 rounded-2xl cursor-pointer transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] select-none focus:outline-none"
+      className="group relative flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-105 active:scale-95 select-none focus:outline-none"
       style={{
         width: W,
         height: H,
-        background: "rgba(6, 11, 20, 0.7)",
-        backdropFilter: "blur(16px)",
-        border: `1px solid ${color === "#00ff41" ? "rgba(0, 255, 65, 0.3)" : "rgba(255, 255, 255, 0.15)"}`,
-        boxShadow: `0 10px 30px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 25px ${color === "#00ff41" ? "rgba(0, 255, 65, 0.15)" : "rgba(56, 189, 248, 0.12)"}`,
+        background: "transparent",
+        border: "none",
+        boxShadow: "none",
       }}
       onPointerEnter={(e) => {
         st.current.lx = NaN;
@@ -318,46 +321,30 @@ export function AsciiHeroButton({
       }}
       onPointerDown={handleClick}
     >
-      {/* ASCII Halftone Canvas */}
+      {/* ASCII Halftone Canvas (No container boxes around it) */}
       <canvas
         ref={cv}
-        style={{ width: W, height: H, position: "absolute", inset: 0, pointerEvents: "none" }}
+        style={{ width: W, height: H, display: "block" }}
         aria-hidden="true"
       />
 
-      {/* Floating Center Glass Badge */}
+      {/* Text in the exact middle of the shape itself, clearly visible */}
       <div
-        className="relative z-10 px-5 py-2.5 rounded-xl flex flex-col items-center justify-center transition-all duration-200"
-        style={{
-          background: "rgba(4, 8, 15, 0.88)",
-          backdropFilter: "blur(20px)",
-          border: `1px solid ${color === "#00ff41" ? "rgba(0, 255, 65, 0.5)" : "rgba(255, 255, 255, 0.25)"}`,
-          boxShadow: `0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px ${color === "#00ff41" ? "rgba(0, 255, 65, 0.3)" : "rgba(56, 189, 248, 0.2)"}`,
-        }}
+        className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
+        style={{ zIndex: 10 }}
       >
-        <div className="flex items-center gap-2">
-          <span
-            className="w-2 h-2 rounded-full animate-pulse"
-            style={{ background: color, boxShadow: `0 0 8px ${color}` }}
-          />
-          <span
-            className="text-sm font-mono font-bold tracking-wider"
-            style={{ color: "#ffffff" }}
-          >
-            [ I'M A {label} ]
-          </span>
-        </div>
-        {sublabel && (
-          <span className="text-[10px] font-mono text-zinc-400 mt-0.5 tracking-widest uppercase">
-            {sublabel}
-          </span>
-        )}
-      </div>
-
-      {/* Hover Ripple Hint */}
-      <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-        <span className="text-[9px] font-mono text-zinc-400 tracking-wider uppercase">
-          CLICK TO ENTER {label} →
+        <span
+          className="px-4 py-2 rounded-lg text-sm sm:text-base font-mono font-black tracking-widest uppercase transition-all duration-200 group-hover:scale-110"
+          style={{
+            color: "#ffffff",
+            background: "rgba(0, 0, 0, 0.75)",
+            backdropFilter: "blur(8px)",
+            border: `1px solid ${color}`,
+            boxShadow: `0 0 15px rgba(0, 0, 0, 0.9), 0 0 20px ${color}60`,
+            textShadow: `0 0 10px ${color}, 0 2px 4px rgba(0,0,0,0.9)`,
+          }}
+        >
+          {label}
         </span>
       </div>
     </div>
