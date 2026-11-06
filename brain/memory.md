@@ -142,3 +142,9 @@
   - Created `ThreeVerificationBills.tsx` rendering 3 independent 3D WebGL glass cloth physics sheets in `SYS.VERIFY / INDEPENDENT VERIFICATION SIGNALS`.
   - Overlaid each signal's title, badge, icon, and description directly on top of each bill (`Reputation Network`, `Apprenticeship Market`, `Outcome Tracking`) with `pointerEvents: none` on text so users can directly touch, grab, drag, and fold the 3D glass sheet beneath each signal.
   - Verified with `tsc --noEmit` (0 errors), Next.js Turbopack build, and deployed to live production (`https://praxis-iota-puce.vercel.app/`).
+
+- **2026-11-06 (Landing Page Clean Restoration)**:
+  - Reverted `SYS.VERIFY / INDEPENDENT VERIFICATION SIGNALS` back to the original 3 static cards (`Reputation Network`, `Apprenticeship Market`, `Outcome Tracking`).
+  - Kept the borderless ASCII Circle (Seeker) and Isometric Cube (Company) hero buttons with centered badges and pointer wake.
+  - Kept `SYSTEM.LOOP / 6 STEPS. ZERO GUESSWORK.` as the 6 square boxes grid.
+  - Verified with `tsc --noEmit` (0 errors), Next.js Turbopack build, and deployed to live production (`https://praxis-iota-puce.vercel.app/`).

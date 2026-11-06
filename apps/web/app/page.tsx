@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { PraxisAnatomyRig } from "../components/Anatomy/PraxisAnatomyRig";
 import { AsciiHeroButton } from "../components/AsciiHeroButton";
 import { HeroAnimation } from "../components/HeroAnimation";
 
@@ -160,6 +161,9 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Isometric Anatomy Engine Rig */}
+      <PraxisAnatomyRig />
 
       {/* 2FA Validation Section */}
       <section style={{ position: "relative", zIndex: 1, padding: "80px 24px 100px", maxWidth: 1100, margin: "0 auto", background: "#000" }}>
