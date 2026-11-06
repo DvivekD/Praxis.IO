@@ -2,6 +2,12 @@
   "name": "praxis",
   "private": true,
   "version": "1.0.0",
+  "description": "PRAXIS — Autonomous Workforce Simulation & Behavioral Telemetry Platform",
+  "homepage": "https://praxis-iota-puce.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DvivekD/Praxis.IO.git"
+  },
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
