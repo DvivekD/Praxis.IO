@@ -1,13 +1,13 @@
 .iso{
-  --anatomy-page:#0b0b0b;--anatomy-card:#131313;--anatomy-text:#a3a3a3;--anatomy-strong:#e6e6e6;--anatomy-muted:#6e6e6e;
-  --anatomy-paper:#131313;--anatomy-face:#1b1b1b;--anatomy-top:#1c1c1c;
-  --anatomy-shade-0:#0f0f0f;--anatomy-shade-1:#121212;--anatomy-shade-2:#151515;--anatomy-shade-3:#181818;
-  --anatomy-lit-top:#262626;--anatomy-lit-shade:#1d1d1d;
-  --anatomy-hi:#d4d4d4;--anatomy-mid:#6a6a6a;--anatomy-lo:#3e3e3e;--anatomy-faint:#2a2a2a;--anatomy-lit:#ffffff;
-  --anatomy-halo:#050505;--anatomy-halo-opacity:.9;--anatomy-dot:#e6e6e6;
-  --anatomy-red:#ff6b6b;--anatomy-green:#6be0a0;--anatomy-blue:#6b9bff;
-  --anatomy-weight:.6px;--anatomy-ease:cubic-bezier(.32,.72,0,1);
-  --anatomy-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --anatomy-page:#000000;--anatomy-card:#050505;--anatomy-text:#00ff41;--anatomy-strong:#ffffff;--anatomy-muted:#888888;
+  --anatomy-paper:#080808;--anatomy-face:#0e0e0e;--anatomy-top:#161616;
+  --anatomy-shade-0:#050505;--anatomy-shade-1:#0a0a0a;--anatomy-shade-2:#0f0f0f;--anatomy-shade-3:#141414;
+  --anatomy-lit-top:#002b0f;--anatomy-lit-shade:#001d0a;
+  --anatomy-hi:#00ff41;--anatomy-mid:#3a3a3a;--anatomy-lo:#1c1c1c;--anatomy-faint:#121212;--anatomy-lit:#00ff41;
+  --anatomy-halo:#000000;--anatomy-halo-opacity:.9;--anatomy-dot:#00ff41;
+  --anatomy-red:#ff4d4d;--anatomy-green:#00ff41;--anatomy-blue:#38bdf8;
+  --anatomy-weight:.75px;--anatomy-ease:cubic-bezier(.32,.72,0,1);
+  --anatomy-mono:'JetBrains Mono',ui-monospace,"SF Mono",Menlo,Consolas,monospace;
   --anatomy-lift:inset 0 1px 0 0 #ffffff0a,inset 0 0 0 1px #ffffff06,0 0 0 1px #00000026,0 1px 1px -.5px #00000014,0 3px 3px -1.5px #00000014,0 6px 6px -3px #00000014,0 12px 12px -6px #00000014;
 }
 .iso[data-theme="light"]{
@@ -80,7 +80,7 @@
 .iso-line[data-flow]{animation:iso-flow 1600ms linear infinite}
 .iso-dots circle[data-pulse]{animation:iso-pulse 1600ms steps(1,end) infinite;animation-delay:var(--pulse-at,0ms)}
 .iso-figure{margin:32px 0 36px}
-.iso-plate{position:relative;padding:52px 24px;border-radius:0;background:var(--anatomy-card);box-shadow:0 0 0 1px var(--anatomy-mid);--anatomy-paper:var(--anatomy-card)}
+.iso-plate{position:relative;padding:52px 24px;border-radius:0;background:#050505;box-shadow:0 0 0 1px #222;--anatomy-paper:#050505}
 .iso-plate-corners{position:absolute;inset:18px 20px;pointer-events:none}
 .iso-plate-corner{position:absolute;color:var(--anatomy-muted);font-family:var(--anatomy-mono);font-size:10.5px;line-height:1;letter-spacing:.04em;white-space:nowrap}
 .iso-plate-corner[data-corner="fig"]{top:0;left:0;color:var(--anatomy-text)}
