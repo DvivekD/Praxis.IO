@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -220,6 +221,37 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Floating V2 Cinematic Landing Switcher Pill */}
+      <Link
+        href="/v2"
+        style={{
+          position: "fixed",
+          bottom: "24px",
+          right: "24px",
+          zIndex: 9999,
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          padding: "10px 18px",
+          borderRadius: "9999px",
+          background: "rgba(6, 11, 20, 0.9)",
+          border: "1px solid rgba(0, 255, 65, 0.45)",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(0,255,65,0.25)",
+          backdropFilter: "blur(16px)",
+          color: "#00ff41",
+          fontSize: "12px",
+          fontFamily: "'JetBrains Mono', monospace",
+          fontWeight: 600,
+          textDecoration: "none",
+          transition: "all 0.2s ease",
+          cursor: "pointer",
+        }}
+        className="hover:scale-105 active:scale-95"
+      >
+        <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#00ff41", display: "inline-block", boxShadow: "0 0 8px #00ff41" }} />
+        <span>PREVIEW V2: CINEMATIC LANDING ↗</span>
+      </Link>
     </div>
   );
 }
